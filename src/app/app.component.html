@@ -1,0 +1,42 @@
+
+<div class='app'>
+
+  <div class='app-top'>
+    <button (click)='toggleVisible()'>toggle visible</button>
+    <button (click)='toggleWeekends()'>toggle weekends</button>
+    <button (click)='gotoPast()'>go to a date in the past</button>
+    (also, click a date/time to add an event)
+  </div>
+
+  <div class='app-calendar' *ngIf="calendarVisible">
+      
+    <full-calendar
+      #calendar
+      editable ="true"
+      eventLimit = "true"
+
+
+      defaultView="dayGridMonth"
+
+      [header]="{
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      }"
+      [plugins]="calendarPlugins"
+      [weekends]="calendarWeekends"
+      [events]="calendarEvents"
+      (dateClick)="handleDateClick($event)"
+      (eventRender)="onEventRender($event)"
+
+
+      
+       
+    ></full-calendar>
+  </div>
+<div>
+  <button style="background-color: #97bee4;" (click)="colors(1)">Doctor1</button>
+  <button style="background-color: #946cce;" (click)="colors(2)" >Doctor2</button>
+  <button style="background-color: #579634;" (click)="colors(20)" >Other Doctors</button>
+</div>
+</div>
